@@ -22,8 +22,7 @@ Arguments:
 - `na.rm` boolean argument on whether to remove missing values or not. The
   default should be set as `FALSE`.
 
-The function should return a logical atomic vector that is the same length as 
-the atomic vector input in `x`. Make your function as robust as possible.
+Make your function as robust as possible.
 You may only use functions and operators available in base R.
 
 Please use code comments as you see fit. You do not need to document every line;
