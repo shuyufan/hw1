@@ -38,7 +38,7 @@ is.armstrong <- function(x, na.rm=FALSE) {
   lengthx <- length(split(xstr,"")) ## number of digits
   sumofs <- 0
   for (i in lengthx) { ## calculate the sum of squares of the digits
-    sumofs <- sumofs + as.numeric(xstr[i])^2
+    sumofs <- sumofs + as.numeric(xstr[i])^lengthx
     i = i + 1
   }
   if (sumofs==x){
