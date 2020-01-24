@@ -1,6 +1,6 @@
 ---
 title: "Homework 1"
-author: '[Student Name]'
+author: "Lynn Fan"
 date: "01-29-2020"
 output: 
   html_document:
@@ -27,10 +27,24 @@ Please remove this portion in your final submission.
 ## Task 1
 
 ```{r}
-is.armstrong <- function() {
-  
-  # body of your function goes here...
-  
+is.armstrong <- function(x, na.rm=FALSE) {
+  if (is.na(x)){
+    na.rm <- TRUE
+  }
+  if (typeof(x) != "double") {
+    return(FALSE)
+  }
+  xstr <- as.character(x) ## convert integers to characters so we know how many digits the numbers have
+  lengthx <- length(split(xstr,"")) ## number of digits
+  sumofs <- 0
+  for (i in lengthx) { ## calculate the sum of squares of the digits
+    sumofs <- sumofs + as.numeric(xstr[i])^2
+    i = i + 1
+  }
+  if (sumofs==x){
+    return(TRUE)
+  }
+  else return(FALSE)
 }
 ```
 
@@ -45,7 +59,7 @@ text in your final submission.
 
 #### Valid inputs
 
-```{r valid-inputs, eval=FALSE}
+```{r valid-inputs}
 is.armstrong(x = 1)
 is.armstrong(x = 153)
 is.armstrong(x = 154)
