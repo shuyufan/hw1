@@ -9,7 +9,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
-install.packages("dplyr")
 library("dplyr")
 ```
 
@@ -34,22 +33,31 @@ is.armstrong <- function(x, na.rm=FALSE) {
    for (s in x) {
      if (is.na(s)==TRUE) {
        na.rm = TRUE
-     } else if (typeof(s)=="character") {
+     } 
+     else if (typeof(s)=="character") {
        print("ERROR:NOT A NUMBER")
+     }
+     else if (s %% 1 != 0){
+       print("ERROR:NOT AN INTEGER")
+     }
+     else if (s < 1 | s > 999) {
+       print("OUT OF RANGE")
      }
      else {
        lengths <- length(split(s,"")) ## number of digits
        for (i in lengths) { ## calculate the sum of squares of the digits
-         sumofs <- sumofs + as.numeric(s[i])^lengths
-         i = i + 1
-        }
-       if (sumofs == s) {
+           sumofs <- sumofs + as.numeric(s[i])^lengths
+           i = i + 1
+         }
+      
+          if (sumofs == s) {
          print(TRUE)
        }
        else print(FALSE)
-     }
+       }
    }
- }
+}
+ 
 ```
 
 
@@ -73,7 +81,7 @@ is.armstrong(x = c(1, 33, 999))
 
 #### Invalid inputs
 
-```{r eval=FALSE, error=TRUE}
+```{r}
 is.armstrong(x = -2)
 is.armstrong(x = 1011)
 is.armstrong(x = c(pi, 6))
