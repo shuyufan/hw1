@@ -29,31 +29,30 @@ Please remove this portion in your final submission.
 
 ```{r}
 is.armstrong <- function(x, na.rm=FALSE) {
-   sumofs = 0
+  sumofs = 0
    for (s in x) {
-     if (is.na(s)==TRUE) {
+     if (is.na(s)==TRUE) { ##remove cases of NA or NaN
        na.rm = TRUE
      } 
      else if (typeof(s)=="character") {
-       print("ERROR:NOT A NUMBER")
+       message("ERROR:NOT A NUMBER")
      }
      else if (s %% 1 != 0){
-       print("ERROR:NOT AN INTEGER")
+       message("ERROR:NOT AN INTEGER")
      }
      else if (s < 1 | s > 999) {
-       print("OUT OF RANGE")
+       message("OUT OF RANGE")
      }
      else {
        lengths <- length(split(s,"")) ## number of digits
        for (i in lengths) { ## calculate the sum of squares of the digits
-           sumofs <- sumofs + as.numeric(s[i])^lengths
+           sumofs = sumofs + as.numeric(s[i])^lengths
            i = i + 1
          }
-      
-          if (sumofs == s) {
-         print(TRUE)
+      if (sumofs == s) {
+         message(s," is an Armstrong number")
        }
-       else print(FALSE)
+       else message(s," is not an Armstrong number")
        }
    }
 }
